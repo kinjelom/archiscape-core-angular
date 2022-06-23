@@ -1,0 +1,25 @@
+{
+  "archiscapeCoreApp": {
+    "landscape": {
+      "home": {
+        "title": "Landscape",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Landscape",
+        "createOrEditLabel": "Dodaj lub edytuj: Landscape",
+        "notFound": "No Landscapes found"
+      },
+      "created": "Utworzono nowy obiekt typu Landscape z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Landscape z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Landscape z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Landscape {{ id }}?"
+      },
+      "detail": {
+        "title": "Landscape"
+      },
+      "id": "Id",
+      "description": "Description",
+      "configuration": "Configuration"
+    }
+  }
+}

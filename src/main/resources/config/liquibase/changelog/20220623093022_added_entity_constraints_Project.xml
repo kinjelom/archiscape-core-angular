@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Project.
+    -->
+    <changeSet id="20220623093022-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="landscape_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project__landscape_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="landscape"/>
+
+        <addForeignKeyConstraint baseColumnNames="team_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project__team_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+    </changeSet>
+</databaseChangeLog>

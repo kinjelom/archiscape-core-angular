@@ -1,0 +1,30 @@
+{
+  "archiscapeCoreApp": {
+    "project": {
+      "home": {
+        "title": "Project",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Project",
+        "createOrEditLabel": "Dodaj lub edytuj: Project",
+        "notFound": "No Projects found"
+      },
+      "created": "Utworzono nowy obiekt typu Project z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Project z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Project z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Project {{ id }}?"
+      },
+      "detail": {
+        "title": "Project"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "configuration": "Configuration",
+      "active": "Active",
+      "contentStoreUrl": "Content Store Url",
+      "landscape": "Landscape",
+      "team": "Team"
+    }
+  }
+}

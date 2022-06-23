@@ -7,6 +7,12 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "team": "Team",
+        "landscape": "Landscape",
+        "landscapeElement": "Landscape Element",
+        "project": "Project",
+        "projectElement": "Project Element",
+        "textFileContent": "Text File Content",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

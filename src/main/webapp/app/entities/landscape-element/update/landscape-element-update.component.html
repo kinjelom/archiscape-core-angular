@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-landscape-element-heading"
+        data-cy="LandscapeElementCreateUpdateHeading"
+        jhiTranslate="archiscapeCoreApp.landscapeElement.home.createOrEditLabel"
+      >
+        Create or edit a Landscape Element
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.landscapeElement.id" for="field_id">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            id="field_id"
+            data-cy="id"
+            formControlName="id"
+            [readonly]="editForm.get('id')!.value != null"
+          />
+          <div *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('id')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('id')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 30 }"
+            >
+              This field cannot be longer than 30 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.landscapeElement.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'archiscapeCoreApp.ElementType.null' | translate }}</option>
+            <option *ngFor="let elementType of elementTypeValues" [value]="elementType">
+              {{ 'archiscapeCoreApp.ElementType.' + elementType | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.landscapeElement.documentation" for="field_documentation"
+            >Documentation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="documentation"
+            id="field_documentation"
+            data-cy="documentation"
+            formControlName="documentation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.landscapeElement.landscape" for="field_landscape">Landscape</label>
+          <select class="form-control" id="field_landscape" data-cy="landscape" name="landscape" formControlName="landscape">
+            <option *ngIf="!editForm.get('landscape')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="landscapeOption.id === editForm.get('landscape')!.value?.id ? editForm.get('landscape')!.value : landscapeOption"
+              *ngFor="let landscapeOption of landscapesSharedCollection; trackBy: trackLandscapeById"
+            >
+              {{ landscapeOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['landscape'])!.invalid && (editForm.get(['landscape'])!.dirty || editForm.get(['landscape'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['landscape'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

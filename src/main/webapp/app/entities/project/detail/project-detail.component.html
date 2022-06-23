@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="project">
+      <h2 data-cy="projectDetailsHeading"><span jhiTranslate="archiscapeCoreApp.project.detail.title">Project</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ project.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.name">Name</span></dt>
+        <dd>
+          <span>{{ project.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.description">Description</span></dt>
+        <dd>
+          <span>{{ project.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.configuration">Configuration</span></dt>
+        <dd>
+          <span>{{ project.configuration }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.active">Active</span></dt>
+        <dd>
+          <span>{{ project.active }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.contentStoreUrl">Content Store Url</span></dt>
+        <dd>
+          <span>{{ project.contentStoreUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.landscape">Landscape</span></dt>
+        <dd>
+          <div *ngIf="project.landscape">
+            <a [routerLink]="['/landscape', project.landscape?.id, 'view']">{{ project.landscape?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.project.team">Team</span></dt>
+        <dd>
+          <div *ngIf="project.team">
+            <a [routerLink]="['/team', project.team?.id, 'view']">{{ project.team?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/project', project.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "archiscapeCoreApp": {
+    "projectElement": {
+      "home": {
+        "title": "Project Element",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Project Element",
+        "createOrEditLabel": "Dodaj lub edytuj: Project Element",
+        "notFound": "No Project Elements found"
+      },
+      "created": "Utworzono nowy obiekt typu Project Element z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Project Element z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Project Element z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Project Element {{ id }}?"
+      },
+      "detail": {
+        "title": "Project Element"
+      },
+      "id": "ID",
+      "name": "Name",
+      "type": "Type",
+      "documentation": "Documentation",
+      "landscapeElementId": "Landscape Element Id",
+      "project": "Project"
+    }
+  }
+}

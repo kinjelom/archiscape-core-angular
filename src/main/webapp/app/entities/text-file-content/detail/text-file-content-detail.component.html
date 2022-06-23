@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="textFileContent">
+      <h2 data-cy="textFileContentDetailsHeading">
+        <span jhiTranslate="archiscapeCoreApp.textFileContent.detail.title">Text File Content</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="archiscapeCoreApp.textFileContent.id">Id</span></dt>
+        <dd>
+          <span>{{ textFileContent.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.textFileContent.version">Version</span></dt>
+        <dd>
+          <span>{{ textFileContent.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.textFileContent.insertDate">Insert Date</span></dt>
+        <dd>
+          <span>{{ textFileContent.insertDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.textFileContent.fileName">File Name</span></dt>
+        <dd>
+          <span>{{ textFileContent.fileName }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.textFileContent.content">Content</span></dt>
+        <dd>
+          <span>{{ textFileContent.content }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/text-file-content', textFileContent.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

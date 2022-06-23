@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220623093019",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "team",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Team",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "team",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}

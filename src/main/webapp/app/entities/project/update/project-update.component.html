@@ -1,0 +1,169 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-project-heading" data-cy="ProjectCreateUpdateHeading" jhiTranslate="archiscapeCoreApp.project.home.createOrEditLabel">
+        Create or edit a Project
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('name')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.configuration" for="field_configuration">Configuration</label>
+          <input
+            type="text"
+            class="form-control"
+            name="configuration"
+            id="field_configuration"
+            data-cy="configuration"
+            formControlName="configuration"
+          />
+          <div
+            *ngIf="
+              editForm.get('configuration')!.invalid && (editForm.get('configuration')!.dirty || editForm.get('configuration')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('configuration')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 4096 }"
+            >
+              This field cannot be longer than 4096 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.active" for="field_active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+          <div *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('active')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.contentStoreUrl" for="field_contentStoreUrl"
+            >Content Store Url</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contentStoreUrl"
+            id="field_contentStoreUrl"
+            data-cy="contentStoreUrl"
+            formControlName="contentStoreUrl"
+          />
+          <div
+            *ngIf="
+              editForm.get('contentStoreUrl')!.invalid &&
+              (editForm.get('contentStoreUrl')!.dirty || editForm.get('contentStoreUrl')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contentStoreUrl')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 2048 }"
+            >
+              This field cannot be longer than 2048 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.landscape" for="field_landscape">Landscape</label>
+          <select class="form-control" id="field_landscape" data-cy="landscape" name="landscape" formControlName="landscape">
+            <option *ngIf="!editForm.get('landscape')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="landscapeOption.id === editForm.get('landscape')!.value?.id ? editForm.get('landscape')!.value : landscapeOption"
+              *ngFor="let landscapeOption of landscapesSharedCollection; trackBy: trackLandscapeById"
+            >
+              {{ landscapeOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['landscape'])!.invalid && (editForm.get(['landscape'])!.dirty || editForm.get(['landscape'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['landscape'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="archiscapeCoreApp.project.team" for="field_team">Team</label>
+          <select class="form-control" id="field_team" data-cy="team" name="team" formControlName="team">
+            <option *ngIf="!editForm.get('team')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="teamOption.id === editForm.get('team')!.value?.id ? editForm.get('team')!.value : teamOption"
+              *ngFor="let teamOption of teamsSharedCollection; trackBy: trackTeamById"
+            >
+              {{ teamOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['team'])!.invalid && (editForm.get(['team'])!.dirty || editForm.get(['team'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['team'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
