@@ -1,0 +1,27 @@
+{
+  "archiscapeCoreApp": {
+    "textFileContent": {
+      "home": {
+        "title": "Text File Content",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Text File Content",
+        "createOrEditLabel": "Dodaj lub edytuj: Text File Content",
+        "notFound": "No Text File Contents found"
+      },
+      "created": "Utworzono nowy obiekt typu Text File Content z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Text File Content z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Text File Content z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Text File Content {{ id }}?"
+      },
+      "detail": {
+        "title": "Text File Content"
+      },
+      "id": "Id",
+      "version": "Version",
+      "insertDate": "Insert Date",
+      "fileName": "File Name",
+      "content": "Content"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="landscape">
+      <h2 data-cy="landscapeDetailsHeading"><span jhiTranslate="archiscapeCoreApp.landscape.detail.title">Landscape</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="archiscapeCoreApp.landscape.id">Id</span></dt>
+        <dd>
+          <span>{{ landscape.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.landscape.description">Description</span></dt>
+        <dd>
+          <span>{{ landscape.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="archiscapeCoreApp.landscape.configuration">Configuration</span></dt>
+        <dd>
+          <span>{{ landscape.configuration }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/landscape', landscape.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

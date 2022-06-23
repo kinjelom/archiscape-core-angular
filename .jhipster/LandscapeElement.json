@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20220623093021",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "landscape_element",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ElementType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "C4_PERSON,C4_SYSTEM,C4_CONTAINER,C4_VIEW"
+    },
+    {
+      "fieldName": "documentation",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "LandscapeElement",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "landscape",
+      "otherEntityRelationshipName": "landscapeElement",
+      "relationshipName": "landscape",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "no"
+}
